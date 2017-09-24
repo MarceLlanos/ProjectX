@@ -39,30 +39,34 @@
 			</descriptor>
 				
 			<!--Parte del primer menu-->
-			<descriptor id="infDes" region="rinfo" focusIndex="2" focusBorderColor="silver">
+			<descriptor id="info-desc" region="region-menu" focusIndex="2" focusBorderColor="silver">
 				<descriptorParam name="background" value="white"/>
-				<descriptorParam name="transparency" value="35%"/>
+				<descriptorParam name="transparency" value="15%"/>
 				<descriptorParam name="style" value="1"/>	
 			</descriptor>
 				
-			<descriptor id="imgDes" region="rimg" focusIndex="2"/>
+			<descriptor id="button-info" region="region-info" focusIndex="1"/>
 			
 			<!--Parte del segundo menu-->
-			<descriptor id="dopc" region="ropc" focusIndex="3" moveRight="3" moveLeft="5">
+			<descriptor id="button-opc" region="region-opc" focusIndex="3" moveRight="3" moveLeft="5">
 				<descriptorParam name="transparency" value="35%"/>
 				<descriptorParam name="fit" value="fill"/>
+				<descriptorParam name="bg-color" value="red"/>
 			</descriptor>				
-			<descriptor id="dup" region="rup" focusIndex="2" moveRight="4" moveLeft="2">
+			<descriptor id="button-up" region="region-up" focusIndex="2" moveRight="4" moveLeft="2">
 				<descriptorParam name="transparency" value="35%"/>
 				<descriptorParam name="fit" value="fill"/>
+				<descriptorParam name="bg-color" value="yellow"/>
 			</descriptor>				
-			<descriptor id="dok" region="rok">
+			<descriptor id="button-ok" region="region-ok">
 				<descriptorParam name="transparency" value="35%"/>
 				<descriptorParam name="fit" value="fill"/>
+				<descriptorParam name="bg-color" value="blue"/>
 			</descriptor>				
-			<descriptor id="dback" region="rback">
+			<descriptor id="button-back" region="region-back">
 				<descriptorParam name="transparency" value="35%"/>
 				<descriptorParam name="fit" value="fill"/>
+				<descriptorParam name="bg-color" value="pink"/>
 			</descriptor>
 		</descriptorBase>
 		<connectorBase>
@@ -71,41 +75,58 @@
 	</head>
 	
 	<body>
-		<port id="entrada" component="videoIni"/>
-		<media id="videoIni" src="media/Angular.mp4" descriptor="videoDesc"/>
-		<context id="inicio">
-			<media id="varGlobal" type="application/x-ginga-settings">
+		<port id="begin" component="video-ini"/>
+		<media id="video-ini" src="media/Angular.mp4" descriptor="video"/>
+		<context id="port-begin">
+			<media id="var-global" type="application/x-ginga-settings">
 				<property name="service.interactivity" value="true"/>
 				<property name="service.currentFocus"/>
 			</media>
-			<media id="videoInicio" refer="videoIni" instance="instSame"/>
+			<media id="video-begin" refer="video-ini" instance="instSame"/>
 			
-			<link xconnector="conector#onBeginSet_varStart" id="interaccion1">
-				<bind role="onBegin" component="videoInicio"/>
-				<bind role="start" component="menu1"/>
-				<bind role="set" component="varGlobal" interface="service.interactivity"/>
+			<link xconnector="conector#onBeginSet_varStart" id="inter-ini">
+				<bind role="onBegin" component="video-begin"/>
+				<bind role="start" component="menu"/>
+				<bind role="set" component="var-global" interface="service.interactivity"/>
 			</link>
 			
-			<context id="menu1">
-				<port id="primerMenu" component="informacionMenu"/>
-				<port id="imagenBoton" component="botonImg"/>
-				<media id="informacionMenu" src="script/anuncioM.lua" descriptor="infDes"/>
-				<media id="botonImg" src="media/infored.jpg" descriptor="imgDes">
-					<property name="transparency" value="60%"/>
+			<context id="menu">
+				<port id="first-menu" component="menu-info"/>
+				<port id="button-infor" component="button-image"/>
+				<media id="menu-info" src="media/menu.png" descriptor="info-desc">
+					<property name="size" value="all"/>
+				</media>
+					
+				<media id="button-image" src="media/infored.jpg" descriptor="button-info">
+					<property name="transparency" value="35%"/>
 				</media>
 			</context>			
 		</context>
 		
-		<context id="reusoPrimeraParte">
-			<media id="reusoAnimacion" refer="videoIni" instance="instSame">
+		<context id="first-media">
+			<media id="media-tv" refer="video-ini" instance="instSame">
 				<property name="bounds"/>
 			</media>
-			<media id="reusoVarGlobal" refer="varGlobal" instance="instSame"/>
+			<media id="var-gl" refer="var-global" instance="instSame"/>
+			<media id="button-red" src="media/infored.jpg"/>
 			
-			<media id="botonRojo" src="media/infored.jpg">
-				
-			</media>
 		</context>
+		
+		<context id="second-menu">
+			<port id="settings" component="media-set" />
+			<port id="up-down" component="media-up"/>
+			<port id="ok" component="media-ok"/>
+			<port id="back" component="media-back"/>
+			
+			<media id="media-set" src="media/infored.jpg" descriptor="button-opc"/>
+			<media id="media-up" src="media/infored.jpg" descriptor="button-up"/>
+			<media id="media-ok" src="media/infored.jpg" descriptor="button-ok"/>
+			<media id="media-back" src="media/infored.jpg" descriptor="button-back"/>
+			
+			
+		</context>
+		
+		
 	</body>
 	
 </ncl>
