@@ -4,34 +4,34 @@
 		<ruleBase>
 			<rule id="en" var="system.language" comparator="eq" value="en"/>
 			<rule id="interaccion" var="service.interactivity" comparator="eq" value="interact"/>
-			<rule id="rInfo" var="service.currentFocus" comparator="eq" value="1"/>
-			<rule id="ruOpc" var="service.currentFocus" comparator="eq" value="4"/>
-			<rule id="ruUp" var="service.currentFocus" comparator="eq" value="5"/>
-			<rule id="ruDown" var="service.currentFocus" comparator="eq" value="6"/>
-			<rule id="ruOk" var="service.currentFocus" comparator="eq" value="7"/>
+			<rule id="rule-info" var="service.currentFocus" comparator="eq" value="1"/>
+			<rule id="rule-opcion" var="service.currentFocus" comparator="eq" value="4"/>
+			<rule id="rule-up" var="service.currentFocus" comparator="eq" value="5"/>
+			<rule id="rule-down" var="service.currentFocus" comparator="eq" value="6"/>
+			<rule id="rule-ok" var="service.currentFocus" comparator="eq" value="7"/>
 		</ruleBase>
 		
 		<regionBase>
-			<region id="backgroundReg" left="0.00%" top="0.00%" width="100%" height="100%" zIndex="1">
-				<region id= "video" left="0.00%" top="0.00%" width="100%" height="100%" zIndex="2"/>
+			<region id="bg-region" left="0.00%" top="0.00%" width="100%" height="100%" zIndex="1">
+				<region id= "video-region" left="0.00%" top="0.00%" width="100%" height="100%" zIndex="2"/>
 				<region id="formReg"  left="46.95%" top="5.00%" width="50.00%" height="81.46%" right="3.05%" bottom="16.67%" zIndex="3"/>
 				<region id="linkReg" left="2.70%" top="47.08%" width="41.31%" height="39.17%" right="55.99%" bottom="16.67%" zIndex="3"/>
 				
 				<!--Parte del primer menu-->
-				<region id="rinfo" left="2.93%" top="91.04%" width="87.94%" height="7.92%" right="0.00%" bottom="0.00%" zIndex="2"/>
-				<region id="rimg" left="92.51%" top="91.04%" width="5.85%" height="7.71%" right="0.00%" bottom="0.00%" zIndex="3"/>
+				<region id="region-menu" left="2.93%" top="91.04%" width="87.94%" height="7.92%" right="0.00%" bottom="0.00%" zIndex="2"/>
+				<region id="region-info" left="92.51%" top="91.04%" width="5.85%" height="7.71%" right="0.00%" bottom="0.00%" zIndex="3"/>
 				
 				<!--Parte del segundo menu-->
-				<region id="ropc" left="5.75%" top="88.94%" width="17.72%" height="10.62%" zIndex="3"/>
-				<region id="rup" left="29.23%" top="88.94%" width="17.72%" height="10.62%" zIndex="3"/>
-				<region id="rok" left="52.82%" top="88.94%" width="17.72%" height="10.62%" zIndex="3"/>
-				<region id="rback" left="76.17%" top="88.94%" width="17.72%" height="10.62%" zIndex="3"/>					
+				<region id="region-opc" left="5.75%" top="88.94%" width="17.72%" height="10.62%" zIndex="3"/>
+				<region id="region-up" left="29.23%" top="88.94%" width="17.72%" height="10.62%" zIndex="3"/>
+				<region id="region-ok" left="52.82%" top="88.94%" width="17.72%" height="10.62%" zIndex="3"/>
+				<region id="region-back" left="76.17%" top="88.94%" width="17.72%" height="10.62%" zIndex="3"/>					
 			</region>
 		</regionBase>
 		
 		<descriptorBase>
-			<descriptor id="backgroundDesc" region="backgroundReg"/>
-			<descriptor id="videoDesc" region="video" focusBorderColor="silver"/>
+			<descriptor id="bg" region="bg-region"/>
+			<descriptor id="video" region="video-region" focusBorderColor="silver"/>
 			<descriptor id="linkDesc" region="linkReg" focusBorderColor="silver"/>
 			<descriptor id="formDesc" region="formReg" focusIndex="1" moveUp="1" moveDown="1">
 				<descriptorParam name="scroll" value="automatic"/>
