@@ -41,7 +41,7 @@
 			<simpleCondition role="onSelection" key="$keyCode"/>
 			<compoundAction operator="seq">
 				<simpleAction role="stop" max="unbounded" qualifier="par"/>	
-				<simpleAction role="set" value="$var"/>
+				<simpleAction role="set" value="$var" max="unbounded"/>
 				<simpleAction role="start" max="unbounded" qualifier="par"/>									
 			</compoundAction>				
 		</causalConnector>
@@ -49,8 +49,8 @@
 		<!--cuando la variable set termine-->	
 		<causalConnector id="onEndSet_var">
 			<connectorParam name="var"/>
-			<simpleCondition role="onEnd"/>
-			<simpleAction role="set" value="$var"/>				
+			<simpleCondition role="onEnd" max="unbounded"/>
+			<simpleAction role="set" value="$var" max="unbounded"/>				
 		</causalConnector>
 		
 		<!--accion al parar la seleccion de un boton-->	
@@ -87,7 +87,7 @@
 						<valueAssessment value="true"/>
 					</assessmentStatement>
 				</compoundCondition>
-				<simpleAction role="start"/>
+				<simpleAction role="start" max="unbounded" qualifier="par"/>
 			</causalConnector>	
 			
 			<causalConnector id="onBeginStartSet_var_delay_duration">
